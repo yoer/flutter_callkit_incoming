@@ -153,7 +153,10 @@ class CallkitIncomingActivity : Activity() {
         if (data == null) finish()
 
         tvNameCaller.text = data?.getString(CallkitConstants.EXTRA_CALLKIT_NAME_CALLER, "")
+
+        val isShowCallID = data?.getBoolean(CallkitConstants.EXTRA_CALLKIT_IS_SHOW_CALL_ID, false)
         tvNumber.text = data?.getString(CallkitConstants.EXTRA_CALLKIT_HANDLE, "")
+        tvNumber.visibility = if (isShowCallID == true) View.VISIBLE else View.INVISIBLE
 
         val isShowLogo = data?.getBoolean(CallkitConstants.EXTRA_CALLKIT_IS_SHOW_LOGO, false)
         ivLogo.visibility = if (isShowLogo == true) View.VISIBLE else View.INVISIBLE
